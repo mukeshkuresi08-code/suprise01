@@ -1,0 +1,109 @@
+.apology-chapter {
+  padding-bottom: 4rem;
+}
+
+.apology-heading {
+  font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+  background: linear-gradient(135deg, var(--deep-rose), var(--rose-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-sm);
+}
+
+.apology-date {
+  font-family: var(--font-handwritten);
+  font-size: 1.4rem;
+  color: var(--golden-yellow);
+  margin-bottom: var(--space-xl);
+  letter-spacing: 0.05em;
+}
+
+.apology-letter {
+  margin-bottom: var(--space-xl);
+}
+
+/* Acceptance */
+.apology-interaction {
+  text-align: center;
+  margin: var(--space-xl) auto;
+}
+
+.accept-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--sunflower-yellow), var(--golden-yellow));
+  color: var(--dark-plum);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-bounce);
+  box-shadow: 0 4px 20px rgba(233, 169, 40, 0.3);
+  border: none;
+}
+
+.accept-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(233, 169, 40, 0.45);
+}
+
+.accept-flower {
+  font-size: 1.5rem;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.accept-response {
+  text-align: center;
+  padding: var(--space-xl);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+}
+
+.accept-sunflower-anim {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+  animation: bloom-spin 1s ease-out;
+}
+
+@keyframes bloom-spin {
+  0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+  60% { transform: scale(1.3) rotate(20deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.accept-title {
+  font-size: 1.4rem;
+  color: var(--deep-rose);
+  margin-bottom: var(--space-md);
+}
+
+.accept-line {
+  color: var(--dark-plum);
+  font-size: 1rem;
+  margin-bottom: 0.3em;
+  opacity: 0.85;
+}
+
+/* Teaser */
+.apology-teaser {
+  text-align: center;
+  margin: var(--space-xl) auto;
+}
+
+.teaser-text {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--deep-rose);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accept-flower { animation: none; }
+  .accept-sunflower-anim { animation: none; }
+}

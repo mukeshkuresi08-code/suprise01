@@ -1,0 +1,109 @@
+.welcome-chapter {
+  background: transparent;
+}
+
+.welcome-heading {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  margin-bottom: var(--space-md);
+  background: linear-gradient(135deg, var(--deep-rose), var(--rose-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.welcome-subheading {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  color: var(--dark-plum);
+  margin-bottom: var(--space-sm);
+}
+
+.welcome-description {
+  font-size: 1rem;
+  color: var(--dark-plum);
+  opacity: 0.8;
+  max-width: 460px;
+  margin: 0 auto var(--space-xl);
+  line-height: 1.7;
+}
+
+.welcome-envelope {
+  margin-bottom: var(--space-lg);
+  animation: float 3s ease-in-out infinite;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 8px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+  border-radius: var(--radius-md);
+}
+
+.welcome-envelope:hover {
+  transform: scale(1.1) translateY(-6px);
+  filter: drop-shadow(0 10px 22px rgba(232, 121, 169, 0.45));
+}
+
+.welcome-envelope:active {
+  transform: scale(0.96) translateY(-2px);
+}
+
+.welcome-envelope:focus-visible {
+  outline: 3px solid var(--deep-rose);
+  outline-offset: 4px;
+}
+
+.envelope-click-hint {
+  font-family: var(--font-handwritten);
+  font-size: 1.1rem;
+  color: var(--deep-rose);
+  opacity: 0.9;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.welcome-envelope:hover .envelope-click-hint {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.welcome-btn {
+  margin-top: var(--space-md);
+  animation: pulse-glow 2s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.welcome-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.welcome-heart {
+  position: absolute;
+  top: -20px;
+  animation: heart-float 10s ease-in-out infinite;
+}
+
+@keyframes heart-float {
+  0% {
+    transform: translateY(-20px) scale(0.8);
+    opacity: 0;
+  }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% {
+    transform: translateY(100vh) scale(1.1) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-heart { display: none; }
+  .welcome-envelope { animation: none; }
+  .welcome-btn { animation: none; }
+}

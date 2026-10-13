@@ -1,0 +1,61 @@
+.sparkle-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  transition: background 1s ease;
+}
+
+.sparkle-pink {
+  background: linear-gradient(
+    160deg,
+    #FCE7F3 0%,
+    #F8C8DC 30%,
+    #FFE8F0 60%,
+    #FFF8EC 100%
+  );
+}
+
+.sparkle-night {
+  background: linear-gradient(
+    160deg,
+    #19142C 0%,
+    #2D1F4E 40%,
+    #3A2068 70%,
+    #19142C 100%
+  );
+}
+
+.sparkle-warm {
+  background: linear-gradient(
+    160deg,
+    #FFF8EC 0%,
+    #FCE7F3 40%,
+    #FFF0E0 70%,
+    #FFF8EC 100%
+  );
+}
+
+.sparkle-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 212, 71, 0.7);
+  animation: twinkle ease-in-out infinite;
+}
+
+.sparkle-night .sparkle-dot {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkle-dot {
+    animation: none;
+    opacity: 0.5;
+  }
+}

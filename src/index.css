@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;600;700&display=swap');
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES — DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Palette */
+  --blush-pink: #F8C8DC;
+  --pastel-pink: #FCE7F3;
+  --rose-pink: #E879A9;
+  --deep-rose: #C94F83;
+  --warm-cream: #FFF8EC;
+  --sunflower-yellow: #FFD447;
+  --golden-yellow: #E9A928;
+  --soft-lavender: #EDE4FF;
+  --dark-plum: #493344;
+  --night-bg: #19142C;
+
+  /* Derived */
+  --glass-bg: rgba(255, 248, 236, 0.65);
+  --glass-border: rgba(248, 200, 220, 0.5);
+  --shadow-soft: 0 8px 32px rgba(73, 51, 68, 0.12);
+  --shadow-glow: 0 0 30px rgba(248, 200, 220, 0.4);
+
+  /* Typography */
+  --font-heading: 'Playfair Display', 'Georgia', serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-handwritten: 'Caveat', 'Comic Sans MS', cursive;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+
+  /* Misc */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   GLOBAL RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark-plum);
+  background: var(--pastel-pink);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--deep-rose);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--deep-rose);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.3;
+  color: var(--dark-plum);
+}
+
+.handwritten {
+  font-family: var(--font-handwritten);
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ============================================================
+   PRIMARY BUTTON
+   ============================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, var(--rose-pink), var(--deep-rose));
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-full);
+  box-shadow:
+    0 4px 20px rgba(201, 79, 131, 0.35),
+    0 0 0 0 rgba(248, 200, 220, 0);
+  transition: all var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow:
+    0 8px 30px rgba(201, 79, 131, 0.45),
+    0 0 20px rgba(248, 200, 220, 0.5);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0.75rem 1.5rem;
+  background: var(--warm-cream);
+  color: var(--deep-rose);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--blush-pink);
+  transition: all var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  background: var(--blush-pink);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(248, 200, 220, 0.4);
+}
+
+/* ============================================================
+   CHAPTER LAYOUT
+   ============================================================ */
+.chapter {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-inner {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   FADE IN ANIMATION
+   ============================================================ */
+.fade-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.fade-in-delay-1 { animation-delay: 0.2s; opacity: 0; }
+.fade-in-delay-2 { animation-delay: 0.4s; opacity: 0; }
+.fade-in-delay-3 { animation-delay: 0.6s; opacity: 0; }
+.fade-in-delay-4 { animation-delay: 0.8s; opacity: 0; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(248, 200, 220, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(248, 200, 220, 0.6); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+}
+
+@keyframes drift {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateX(60px) translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ============================================================
+   LETTER STYLING
+   ============================================================ */
+.letter-paper {
+  background: linear-gradient(180deg, #FFF8EC 0%, #FFF0E0 100%);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow:
+    0 4px 24px rgba(73, 51, 68, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(248, 200, 220, 0.3);
+  text-align: left;
+  font-family: var(--font-handwritten);
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--dark-plum);
+  white-space: pre-line;
+  position: relative;
+}
+
+.letter-paper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 40px;
+  right: 40px;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 4px,
+    rgba(248, 200, 220, 0.3) 4px,
+    rgba(248, 200, 220, 0.3) 8px
+  );
+}
+
+/* ============================================================
+   PROGRESS FLOWERS
+   ============================================================ */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 248, 236, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(248, 200, 220, 0.3);
+}
+
+.progress-flower {
+  width: 28px;
+  height: 28px;
+  transition: all var(--transition-bounce);
+  filter: grayscale(100%) opacity(0.4);
+}
+
+.progress-flower.bloomed {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.15);
+}
+
+/* ============================================================
+   SOUND TOGGLE
+   ============================================================ */
+.sound-toggle {
+  position: fixed;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-soft);
+}
+
+.sound-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+
+  .chapter {
+    padding: var(--space-lg) var(--space-sm);
+    padding-top: 56px;
+  }
+
+  .chapter-inner {
+    max-width: 100%;
+  }
+
+  .letter-paper {
+    padding: var(--space-lg) var(--space-md);
+    font-size: 1.1rem;
+  }
+
+  .btn-primary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .progress-flower {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+
+  .chapter {
+    padding: var(--space-md) var(--space-xs);
+    padding-top: 52px;
+  }
+
+  .letter-paper {
+    padding: var(--space-md);
+    font-size: 1rem;
+  }
+}

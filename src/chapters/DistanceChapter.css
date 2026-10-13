@@ -1,0 +1,188 @@
+.distance-chapter {
+  color: #e8dff0;
+}
+
+.distance-heading {
+  font-size: clamp(1.5rem, 4.5vw, 2.6rem);
+  color: #f0e6ff;
+  text-shadow: 0 0 24px rgba(237, 228, 255, 0.3);
+  margin-bottom: var(--space-lg);
+}
+
+.distance-text {
+  text-align: left;
+  max-width: 580px;
+  margin: 0 auto var(--space-xl);
+}
+
+.distance-text p {
+  color: #d4c8e3;
+  font-size: 1.05rem;
+  margin-bottom: 0.25em;
+  line-height: 1.75;
+}
+
+.distance-gap {
+  height: 0.6em;
+}
+
+/* Night scene */
+.night-scene {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.constellation-star {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  animation: twinkle ease-in-out infinite;
+}
+
+/* Connected stars */
+.connected-stars {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  right: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.big-star {
+  font-size: 1.8rem;
+  color: var(--sunflower-yellow);
+  text-shadow: 0 0 20px rgba(255, 212, 71, 0.6);
+  animation: pulse-star 3s ease-in-out infinite;
+}
+
+.star-left { animation-delay: 0s; }
+.star-right { animation-delay: 1.5s; }
+
+@keyframes pulse-star {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
+.connection-line {
+  flex: 1;
+  height: 20px;
+  margin: 0 8px;
+}
+
+/* Clouds */
+.night-cloud {
+  position: absolute;
+  width: 180px;
+  height: 40px;
+  border-radius: 40px;
+  background: rgba(100, 80, 140, 0.15);
+}
+
+.cloud-1 { top: 30%; left: -40px; animation: cloud-drift 30s linear infinite; }
+.cloud-2 { top: 50%; right: -60px; animation: cloud-drift 40s linear infinite reverse; }
+
+@keyframes cloud-drift {
+  from { transform: translateX(-200px); }
+  to { transform: translateX(calc(100vw + 200px)); }
+}
+
+/* Bottom sunflowers */
+.distance-sunflowers {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding-bottom: 12px;
+}
+
+.distance-sf {
+  font-size: 1.8rem;
+  animation: sway 4s ease-in-out infinite;
+}
+
+/* Star interaction */
+.star-interaction {
+  text-align: center;
+  margin: var(--space-lg) auto;
+}
+
+.star-button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-md) var(--space-xl);
+  background: rgba(255, 212, 71, 0.1);
+  border: 2px solid rgba(255, 212, 71, 0.3);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-bounce);
+  color: #e8dff0;
+}
+
+.star-button:hover {
+  background: rgba(255, 212, 71, 0.18);
+  border-color: rgba(255, 212, 71, 0.5);
+  transform: scale(1.05);
+}
+
+.star-revealed {
+  border-color: var(--sunflower-yellow);
+  background: rgba(255, 212, 71, 0.15);
+}
+
+.star-icon {
+  font-size: 2.5rem;
+  animation: pulse-star 2.5s ease-in-out infinite;
+}
+
+.star-label {
+  font-family: var(--font-handwritten);
+  font-size: 1.1rem;
+  color: var(--sunflower-yellow);
+}
+
+.hidden-note .letter-paper {
+  background: linear-gradient(180deg, rgba(255, 248, 236, 0.95) 0%, rgba(255, 240, 224, 0.95) 100%);
+  color: var(--dark-plum);
+  max-width: 500px;
+  margin: 1.5rem auto 0;
+}
+
+.distance-btn {
+  background: linear-gradient(135deg, #8B5CF6, #A855F7) !important;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35) !important;
+}
+
+.distance-btn:hover {
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5) !important;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@media (max-width: 768px) {
+  .connected-stars { top: 8%; left: 5%; right: 5%; }
+  .big-star { font-size: 1.3rem; }
+  .distance-sunflowers { gap: 12px; }
+  .distance-sf { font-size: 1.3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .constellation-star,
+  .big-star,
+  .star-icon,
+  .distance-sf,
+  .night-cloud { animation: none; opacity: 0.7; }
+  .connection-line line animate { display: none; }
+}

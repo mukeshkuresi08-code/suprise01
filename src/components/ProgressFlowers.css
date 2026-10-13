@@ -1,0 +1,83 @@
+/* ============================================================
+   🌻 PROGRESS FLOWERS — INTERACTIVE SLIDE NAVIGATION
+   ============================================================ */
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0.65rem var(--space-md);
+  background: rgba(255, 248, 236, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(248, 200, 220, 0.4);
+  box-shadow: 0 4px 18px rgba(73, 51, 68, 0.06);
+}
+
+.progress-flower {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  padding: 3px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-bounce);
+  filter: grayscale(100%) opacity(0.42);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.progress-flower:hover {
+  filter: grayscale(15%) opacity(0.9);
+  transform: scale(1.22);
+}
+
+.progress-flower.bloomed {
+  filter: grayscale(0%) opacity(1);
+}
+
+.progress-flower.active {
+  transform: scale(1.28);
+  filter: drop-shadow(0 0 8px rgba(233, 169, 40, 0.85));
+}
+
+.progress-flower.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--deep-rose);
+  border-radius: 50%;
+  box-shadow: 0 0 4px var(--deep-rose);
+}
+
+.progress-flower:focus-visible {
+  outline: 2px solid var(--deep-rose);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .progress-bar {
+    gap: var(--space-sm);
+    padding: 0.5rem var(--space-xs);
+  }
+
+  .progress-flower {
+    width: 28px;
+    height: 28px;
+    padding: 2px;
+  }
+}

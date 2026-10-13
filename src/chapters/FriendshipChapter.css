@@ -1,0 +1,194 @@
+.friendship-chapter {
+  padding-bottom: 4rem;
+}
+
+.transition-ghost {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  display: inline-block;
+}
+
+.pink-ghost {
+  filter: hue-rotate(300deg) saturate(1.5);
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.ghost-sunflower {
+  position: absolute;
+  right: -20px;
+  top: -8px;
+  font-size: 1.2rem;
+}
+
+.friendship-heading {
+  font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+  background: linear-gradient(135deg, var(--deep-rose), var(--rose-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-sm);
+}
+
+.friendship-sub {
+  font-family: var(--font-handwritten);
+  font-size: 1.3rem;
+  color: var(--dark-plum);
+  opacity: 0.8;
+  margin-bottom: var(--space-xl);
+}
+
+/* Cards */
+.friendship-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.f-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+  box-shadow: 0 4px 16px rgba(73, 51, 68, 0.06);
+}
+
+.f-card:hover {
+  box-shadow: 0 6px 24px rgba(73, 51, 68, 0.12);
+}
+
+.f-card-open {
+  border-color: var(--rose-pink);
+}
+
+.f-card-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark-plum);
+  transition: background 0.2s;
+}
+
+.f-card-header:hover {
+  background: rgba(248, 200, 220, 0.15);
+}
+
+.f-card-emoji {
+  font-size: 1.5rem;
+}
+
+.f-card-title {
+  flex: 1;
+}
+
+.f-card-arrow {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  transition: transform 0.3s;
+}
+
+.f-card-open .f-card-arrow {
+  transform: rotate(180deg);
+}
+
+.f-card-body {
+  padding: 0 var(--space-lg) var(--space-lg);
+  font-family: var(--font-handwritten);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--dark-plum);
+  border-top: 1px solid rgba(248, 200, 220, 0.2);
+  animation: slideDown 0.3s ease;
+}
+
+.f-card-body p {
+  margin-bottom: 0.4em;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Title poll */
+.title-poll {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  border: 1px solid var(--glass-border);
+  margin-bottom: var(--space-lg);
+}
+
+.poll-question {
+  font-size: 1.2rem;
+  color: var(--dark-plum);
+  margin-bottom: var(--space-lg);
+}
+
+.poll-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.poll-option {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--warm-cream);
+  border: 2px solid var(--blush-pink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--dark-plum);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  text-align: center;
+}
+
+.poll-option:hover {
+  background: var(--blush-pink);
+  transform: translateY(-2px);
+}
+
+.poll-selected {
+  background: linear-gradient(135deg, var(--rose-pink), var(--deep-rose));
+  color: #fff;
+  border-color: var(--deep-rose);
+  transform: scale(1.02);
+}
+
+.poll-selected:hover {
+  background: linear-gradient(135deg, var(--deep-rose), var(--rose-pink));
+}
+
+.poll-reaction {
+  margin-top: var(--space-lg);
+  font-family: var(--font-handwritten);
+  font-size: 1.2rem;
+  color: var(--deep-rose);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .poll-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pink-ghost { animation: none; }
+  .f-card-body { animation: none; }
+}

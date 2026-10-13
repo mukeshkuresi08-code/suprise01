@@ -1,0 +1,112 @@
+.envelope-chapter {
+  background: transparent;
+}
+
+.envelope-hint {
+  font-size: 1.5rem;
+  color: var(--deep-rose);
+  margin-bottom: var(--space-xl);
+}
+
+.envelope-clickable {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  transition: transform var(--transition-bounce);
+  margin: 0 auto;
+}
+
+.envelope-clickable:hover {
+  transform: scale(1.06);
+}
+
+.envelope-body {
+  width: 220px;
+  height: 160px;
+  position: relative;
+  perspective: 600px;
+}
+
+.envelope-front {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #FFF0E0, #FFF8EC);
+  border-radius: 12px;
+  border: 2px solid var(--blush-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(73, 51, 68, 0.12);
+  position: relative;
+  z-index: 1;
+}
+
+.envelope-seal {
+  font-size: 2.5rem;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.envelope-flap {
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: linear-gradient(180deg, var(--blush-pink), #FCE7F3);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  border-radius: 12px 12px 0 0;
+  transform-origin: top center;
+  transition: transform 0.8s ease;
+}
+
+.envelope-clickable:hover .envelope-flap {
+  transform: rotateX(-20deg);
+}
+
+.envelope-tap-hint {
+  font-family: var(--font-handwritten);
+  font-size: 1rem;
+  color: var(--rose-pink);
+  opacity: 0.7;
+}
+
+/* Letter slide-out */
+.letter-slide {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.letter-slide.letter-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.letter-text p {
+  margin-bottom: 0.1em;
+}
+
+.letter-text .letter-gap {
+  height: 0.8em;
+}
+
+@media (max-width: 480px) {
+  .envelope-body {
+    width: 180px;
+    height: 130px;
+  }
+
+  .envelope-seal {
+    font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .envelope-seal { animation: none; }
+  .letter-slide { transition: none; opacity: 1; transform: none; }
+}
